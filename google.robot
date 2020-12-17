@@ -1,8 +1,10 @@
 *** Settings ***
-Library     SeleniumLibrary
+Library            SeleniumLibrary
 Test Teardown      Close Browser
 
 *** Variables ***
+${URL}         https://www.google.com/
+${BROWSER}     gc
 
 *** Test Cases ***
 ค้นหาข้อมูลด้วย keyword คนละครึ่ง สำเร็จ
@@ -21,5 +23,5 @@ Test Teardown      Close Browser
     Press Keys     name:q   RETURN
 
 เข้าไปยัง google เพื่อค้นหาข้อมูล
-    Open Browser    url=https://www.google.com/    browser=gc
+    Open Browser    url=${URL}    browser=${BROWSER}
     Maximize Browser Window
