@@ -11,16 +11,18 @@ Library    SeleniumLibrary
 
 *** Keywords ***
 upload ไฟล์ที่ 1 สำเร็จ
-    Click Element   xpath://table/tbody/tr[1]/td[5]/button[1]
-    Wait Until Element Is Visible   xpath://div[@style="width: 33%;"]
+    Upload file and check   1  33%
 
 upload ไฟล์ที่ 2 สำเร็จ
-    Click Element   xpath://table/tbody/tr[2]/td[5]/button[1]
-    Wait Until Element Is Visible   xpath://div[@style="width: 67%;"]
+    Upload file and check   2  67%
 
 upload ไฟล์ที่ 3 สำเร็จ
-    Click Element   xpath://table/tbody/tr[3]/td[5]/button[1]
-    Wait Until Element Is Visible   xpath://div[@style="width: 100%;"]
+    Upload file and check   3  100%
+
+Upload file and check
+    [Arguments]   ${row_no}   ${progress_percent}
+    Click Element   xpath://table/tbody/tr[${row_no}]/td[5]/button[1]
+    Wait Until Element Is Visible   xpath://div[@style="width: ${progress_percent};"]
 
 
 เลือกไฟล์จำนวน 3 ไฟล์เข้าคิว
