@@ -1,6 +1,8 @@
 *** Settings ***
 Library            SeleniumLibrary
-Test Teardown      Close Browser
+Suite Setup        เข้าไปยัง google เพื่อค้นหาข้อมูล
+Suite Teardown     Close Browser
+Test Teardown      กลับไปยังหน้าค้นหา
 
 *** Variables ***
 ${URL}         https://www.google.com/
@@ -9,19 +11,15 @@ ${BROWSER}     gc
 *** Test Cases ***
 ค้นหาข้อมูลด้วย keyword เยียวยา สำเร็จ
     [Tags]  testing
-    เข้าไปยัง google เพื่อค้นหาข้อมูล
     ค้นหาข้อมูล   เยียวยา
 
 ค้นหาข้อมูลด้วย keyword ไม่ได้รับ OTP สำเร็จ
     [Tags]  done
-    เข้าไปยัง google เพื่อค้นหาข้อมูล
     ค้นหาข้อมูล   ไม่ได้รับ OTP
 
 ค้นหาข้อมูลด้วย keyword คนละครึ่ง สำเร็จ
     [Tags]  done
-    เข้าไปยัง google เพื่อค้นหาข้อมูล
     ค้นหาข้อมูล   คนละครึ่ง
-    พบข้อมูลคนละครึ่งในอันดับแรก
 
 *** Keywords ***
 ค้นหาข้อมูล
@@ -36,3 +34,6 @@ ${BROWSER}     gc
 เข้าไปยัง google เพื่อค้นหาข้อมูล
     Open Browser    url=${URL}    browser=${BROWSER}
     Maximize Browser Window
+
+กลับไปยังหน้าค้นหา
+    Go To    ${URL}
