@@ -1,3 +1,6 @@
+*.log
+*.png
+.DS_Store
 chromedriver
 log.html
 output.xml
